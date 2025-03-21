@@ -6,6 +6,6 @@ export interface Data {
 
 export class CoreService {
   greet(name: string): string {
-    return `Hello, ${name}!`;
+    return `Hallo, ${name}!`;
   }
 }
