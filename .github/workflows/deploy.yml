@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./apps/webapp/dist/webapp"
+          path: "./apps/webapp/dist/webapp-build/browser"
 
       - name: Deploy to GitHub Pages
         id: deployment
