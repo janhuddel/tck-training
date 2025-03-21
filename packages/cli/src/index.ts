@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { CoreService } from "@tck-training/core";
+import { CoreService } from "@tck-training/excel-parser";
 import { Command } from "commander";
 
 const program = new Command();

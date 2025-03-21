@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoreService } from '@tck-training/core';
+import { CoreService } from '@tck-training/excel-parser';
 
 @Component({
   selector: 'app-root',

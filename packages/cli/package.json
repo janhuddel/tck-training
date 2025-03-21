@@ -10,7 +10,7 @@
     "lint": "eslint src --ext .ts"
   },
   "dependencies": {
-    "@tck-training/core": "workspace:*",
+    "@tck-training/excel-parser": "workspace:*",
     "commander": "^12.0.0"
   },
   "devDependencies": {
