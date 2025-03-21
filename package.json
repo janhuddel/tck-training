@@ -6,7 +6,7 @@
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "cli": "cd packages/cli && pnpm start",
-    "deploy": "cd apps/web && pnpm deploy"
+    "deploy": "cd apps/webapp && pnpm deploy"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
