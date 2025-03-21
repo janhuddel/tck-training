@@ -1,0 +1,23 @@
+{
+  "name": "tck-training",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "cli": "cd packages/cli && pnpm start",
+    "deploy": "cd apps/web && pnpm deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3",
+    "nx": "^18.0.4",
+    "@nx/workspace": "^18.0.4",
+    "@nx/angular": "^18.0.4",
+    "@nx/js": "^18.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
