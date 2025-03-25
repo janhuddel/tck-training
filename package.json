@@ -9,6 +9,7 @@
     "deploy": "cd apps/webapp && pnpm deploy"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/node": "^20.11.24",
     "typescript": "^5.3.3",
     "nx": "^18.0.4",

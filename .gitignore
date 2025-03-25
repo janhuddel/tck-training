@@ -70,3 +70,6 @@ package-lock.json
 
 # Nx
 .nx/cache/ 
+
+# Other
+packages/cli/sample

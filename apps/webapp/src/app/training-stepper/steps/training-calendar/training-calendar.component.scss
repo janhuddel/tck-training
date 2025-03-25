@@ -1,0 +1,52 @@
+.training-dates-container {
+    padding: 1rem;
+    color: white;
+    
+    h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+  
+    table {
+      width: 100%;
+      margin-bottom: 2rem;
+      margin-top: 16px;
+  
+      .mat-column-date {
+        width: 150px;
+      }
+  
+      .mat-column-actions {
+        width: 80px;
+        text-align: center;
+      }
+  
+      .mat-column-otherPlayers {
+        padding: 8px 16px;
+      }
+  
+      mat-chip-set {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+    }
+  
+    .actions {
+      display: flex;
+      justify-content: center;
+      
+      button {
+        mat-icon {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  
+  .no-player-message {
+    text-align: center;
+    padding: 24px;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  

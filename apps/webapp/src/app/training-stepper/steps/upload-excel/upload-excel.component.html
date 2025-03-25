@@ -1,0 +1,19 @@
+<div class="upload-container">
+  <input
+    type="file"
+    accept=".xlsx,.xls"
+    (change)="onFileSelected($event)"
+    [disabled]="isUploading"
+    #fileInput
+    class="file-input"
+  />
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="fileInput.click()"
+    [disabled]="isUploading"
+  >
+    <mat-icon>upload_file</mat-icon>
+    {{ isUploading ? "Uploading..." : "Upload Excel File" }}
+  </button>
+</div>

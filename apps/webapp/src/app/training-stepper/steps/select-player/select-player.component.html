@@ -1,0 +1,13 @@
+<div class="select-container">
+  <mat-form-field>
+    <mat-label>Spieler auswählen</mat-label>
+    <mat-select
+      [(ngModel)]="selectedPlayer"
+      (selectionChange)="onPlayerSelect($event.value)"
+    >
+      <mat-option *ngFor="let player of players | sort" [value]="player">
+        {{ player }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

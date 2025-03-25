@@ -1,11 +1,14 @@
-export interface Data {
-  id: string;
-  name: string;
-  value: number;
-}
+import { Config, H50, PROVI } from "./parser/config";
 
-export class CoreService {
-  greet(name: string): string {
-    return `Hallo, ${name}!`;
-  }
-}
+export {
+  createCalenderForPlayer,
+  getTrainingPartnerStats,
+  parseExcelFile,
+} from "./parser/excel-parser";
+
+export type { TrainingCalendar, TrainingEvent } from "./parser/excel-parser";
+
+export const DEFAULT_CONFIGS: Record<string, Config> = {
+  H50,
+  PROVI,
+};

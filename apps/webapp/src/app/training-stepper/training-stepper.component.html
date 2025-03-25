@@ -1,0 +1,18 @@
+<mat-stepper linear #stepper>
+  <mat-step [completed]="isUploadComplete">
+    <ng-template matStepLabel>Trainingsplan hochladen</ng-template>
+    <app-upload-excel (uploadComplete)="onUploadComplete()"></app-upload-excel>
+  </mat-step>
+
+  <mat-step [completed]="isPlayerSelected" [editable]="isUploadComplete">
+    <ng-template matStepLabel>Spieler auswählen</ng-template>
+    <app-select-player
+      (playerSelected)="onPlayerSelected()"
+    ></app-select-player>
+  </mat-step>
+
+  <mat-step [editable]="isPlayerSelected">
+    <ng-template matStepLabel>Trainingsdaten</ng-template>
+    <app-training-calendar></app-training-calendar>
+  </mat-step>
+</mat-stepper>

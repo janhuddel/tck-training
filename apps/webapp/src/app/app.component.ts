@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
-import { CoreService } from '@tck-training/excel-parser';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { TrainingStepperComponent } from './training-stepper/training-stepper.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    TrainingStepperComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  greeting: string;
-
-  constructor() {
-    const coreService = new CoreService();
-    this.greeting = coreService.greet('John');
-  }
+  title = 'tennis-matchdays';
 }

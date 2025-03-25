@@ -12,14 +12,16 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.2.0",
+    "@angular/cdk": "^19.2.6",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
     "@angular/forms": "^19.2.0",
+    "@angular/material": "^19.2.6",
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@tck-training/excel-parser": "workspace:*",
+    "@tck-training/excel-parser": "^1.0.0-alpha.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -31,6 +33,7 @@
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "eslint": "^8.57.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
@@ -38,7 +41,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2",
-    "angular-cli-ghpages": "^2.0.3"
+    "typescript": "~5.7.2"
   }
 }
