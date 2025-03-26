@@ -63,11 +63,6 @@ coverage/
 *.swo
 *~
 
-# Package manager files
-pnpm-lock.yaml
-yarn.lock
-package-lock.json
-
 # Nx
 .nx/cache/ 
 
