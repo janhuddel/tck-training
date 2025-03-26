@@ -8,11 +8,13 @@
     "clean": "node scripts/clean.js"
   },
   "devDependencies": {
-    "nx": "^18.0.4",
-    "@nx/workspace": "^18.0.4",
-    "@nx/angular": "^18.0.4",
-    "@nx/js": "^18.0.4",
-    "rimraf": "^5.0.5"
+    "@nx/angular": "^20.6.4",
+    "@nx/js": "^20.6.4",
+    "@nx/workspace": "^20.6.4",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.11.18",
+    "nx": "^20.6.4",
+    "rimraf": "^6.0.1"
   },
   "engines": {
     "node": ">=18.0.0",
