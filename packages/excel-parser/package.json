@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha.1",
   "description": "Diese Bibliothek stellt Funktionen bereit, um Trainingstermine aus einer Excel-Datei zu ermitteln (üblicherweise die Hallentermine für eine Winter-Runde).",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
@@ -35,9 +36,10 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
+    "@eslint/js": "^9.23.0",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
-    "eslint": "^9.15.0",
+    "globals": "^16.0.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.3.0",
     "typescript": "^5.8.2"

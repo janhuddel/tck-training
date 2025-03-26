@@ -170,15 +170,18 @@ importers:
         specifier: ^0.18.5
         version: 0.18.5
     devDependencies:
+      '@eslint/js':
+        specifier: ^9.23.0
+        version: 9.23.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.28.0
         version: 8.28.0(@typescript-eslint/parser@8.28.0(eslint@9.23.0(jiti@1.21.7))(typescript@5.8.2))(eslint@9.23.0(jiti@1.21.7))(typescript@5.8.2)
       '@typescript-eslint/parser':
         specifier: ^8.28.0
         version: 8.28.0(eslint@9.23.0(jiti@1.21.7))(typescript@5.8.2)
-      eslint:
-        specifier: ^9.15.0
-        version: 9.23.0(jiti@1.21.7)
+      globals:
+        specifier: ^16.0.0
+        version: 16.0.0
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.13.13)(babel-plugin-macros@3.1.0)
@@ -4370,6 +4373,10 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globby@11.1.0:
@@ -12643,6 +12650,8 @@ snapshots:
       type-fest: 0.20.2
 
   globals@14.0.0: {}
+
+  globals@16.0.0: {}
 
   globby@11.1.0:
     dependencies:

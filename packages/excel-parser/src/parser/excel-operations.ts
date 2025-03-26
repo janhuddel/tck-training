@@ -54,8 +54,8 @@ export async function openWorksheet(
       }
 
       // Node.js environment
-      const fs = require("fs");
-      const path = require("path");
+      const fs = await import("fs");
+      const path = await import("path");
 
       // Check if file exists and has correct extension
       if (!fs.existsSync(fileInput)) {
@@ -123,8 +123,11 @@ export function readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
 
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = (event) => resolve(event.target?.result as ArrayBuffer);
-    reader.onerror = () => reject(new Error("Failed to read file"));
+
+    reader.onload = (event): void =>
+      resolve(event.target?.result as ArrayBuffer);
+    reader.onerror = (): void => reject(new Error("Failed to read file"));
+
     reader.readAsArrayBuffer(file);
   });
 }
