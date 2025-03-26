@@ -1,9 +1,9 @@
 {
   "name": "@tck-training/excel-parser",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.3",
   "description": "Diese Bibliothek stellt Funktionen bereit, um Trainingstermine aus einer Excel-Datei zu ermitteln (üblicherweise die Hallentermine für eine Winter-Runde).",
   "main": "dist/index.js",
-  "type": "module",
+  "type": "commonjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
@@ -32,7 +32,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint --config eslint.config.cjs src --ext .ts",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
