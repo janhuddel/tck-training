@@ -1,0 +1,39 @@
+{
+  "name": "@tck-training/helloworld",
+  "version": "1.0.0-alpha.8",
+  "description": "A TypeScript project with NodeNext module system and Vitest",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "tck-helloworld": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepare": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.13.13",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
+}
