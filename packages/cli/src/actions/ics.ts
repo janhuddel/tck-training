@@ -8,7 +8,7 @@ import { format } from "date-fns";
 export const ics = async (
   file: string,
   options: { player?: string; config: string }
-) => {
+): Promise<void> => {
   const configName = options.config;
   const calendar = await parseExcelFile(file, DEFAULT_CONFIGS[configName]);
 

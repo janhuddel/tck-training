@@ -1,5 +1,5 @@
-/// <reference types="jest" />
 import path from "path";
+import { describe, expect, it } from "vitest";
 
 import { H50, PROVI } from "../src/parser/config";
 import { parseExcelFile } from "../src/parser/excel-parser";

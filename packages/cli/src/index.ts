@@ -2,16 +2,19 @@
 
 import { DEFAULT_CONFIGS } from "@tck-training/excel-parser";
 import { Command, Option } from "commander";
-import { version } from "../package.json";
-import { ics } from "./actions/ics";
-import { print } from "./actions/print";
+import { ics } from "./actions/ics.js";
+import { print } from "./actions/print.js";
+
+const pkg = await import("../package.json", {
+  assert: { type: "json" },
+});
 
 const program = new Command();
 
-program.name("tck").description("TCK Training CLI tool").version(version);
+program.name("tck").description("TCK Training CLI tool").version(pkg.version);
 
 // Helper function to add common options to commands
-const addCommonOptions = (command: Command) => {
+const addCommonOptions = (command: Command): Command => {
   return command
     .argument("<file>", "Excel file to parse")
     .addOption(
