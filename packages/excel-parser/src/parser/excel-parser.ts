@@ -1,12 +1,12 @@
-import * as XLSX from "xlsx";
-import { Config } from "./config";
+import * as XLSX from 'xlsx';
+import { Config } from './config.js';
 import {
   extractDateFromCell,
   getPlayerName,
   isBrowser,
   isNode,
   openWorksheet,
-} from "./excel-operations";
+} from './excel-operations.js';
 
 /**
  * Represents a single training event with date and participating players
@@ -35,14 +35,14 @@ export const parseExcelFile = async (
   config: Config
 ): Promise<TrainingCalendar> => {
   // Validate environment compatibility
-  if (typeof fileInput === "string" && isBrowser()) {
+  if (typeof fileInput === 'string' && isBrowser()) {
     throw new Error(
-      "String file paths are not supported in browser environment. Please use File object instead."
+      'String file paths are not supported in browser environment. Please use File object instead.'
     );
   }
   if (fileInput instanceof File && isNode()) {
     throw new Error(
-      "File objects are not supported in Node.js environment. Please use file path string instead."
+      'File objects are not supported in Node.js environment. Please use file path string instead.'
     );
   }
 
@@ -84,9 +84,7 @@ export const getTrainingPartnerStats = (
   playerName: string
 ): Array<{ partner: string; occurrences: number }> => {
   // Get only events where the player participated
-  const playerEvents = calendar.events.filter((event) =>
-    event.players.includes(playerName)
-  );
+  const playerEvents = calendar.events.filter((event) => event.players.includes(playerName));
 
   // Create a map to count occurrences of each training partner
   const partnerCounts = new Map<string, number>();
@@ -105,19 +103,14 @@ export const getTrainingPartnerStats = (
     .sort((a, b) => b.occurrences - a.occurrences);
 };
 
-function createTrainingCalendar(
-  worksheet: XLSX.WorkSheet,
-  config: Config
-): TrainingCalendar {
-  const range = XLSX.utils.decode_range(worksheet["!ref"] || "A1");
+function createTrainingCalendar(worksheet: XLSX.WorkSheet, config: Config): TrainingCalendar {
+  const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1');
   const trainingDates = parseDateColumns(worksheet, range, config);
 
   parsePlayers(worksheet, range, config, trainingDates);
 
   return {
-    events: Array.from(trainingDates.values()).filter(
-      (event) => event.players.length > 0
-    ),
+    events: Array.from(trainingDates.values()).filter((event) => event.players.length > 0),
   };
 }
 
@@ -146,7 +139,7 @@ function parseDateColumns(
       break; // Skip dates that don't have a configured start time
     }
 
-    const [hours, minutes] = startTime.split(":");
+    const [hours, minutes] = startTime.split(':');
     const trainingDateTime = new Date(date);
     trainingDateTime.setHours(parseInt(hours, 10));
     trainingDateTime.setMinutes(parseInt(minutes, 10));

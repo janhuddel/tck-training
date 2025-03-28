@@ -1,9 +1,10 @@
-import { parseExcelFile } from "@tck-training/excel-parser";
-import { beforeEach, describe, it, vi } from "vitest";
-import { print } from "../src/actions/print";
-import { trainingCalendarMock } from "./__fixtures__/training-calendar";
+import { parseExcelFile } from '@tck-training/excel-parser';
+import { beforeEach, describe, it, vi } from 'vitest';
+import { print } from '../src/actions/print';
+import { trainingCalendarMock } from './__fixtures__/training-calendar';
 
-vi.mock(import("@tck-training/excel-parser"), async (importOriginal) => {
+// only mock the parseExcelFile function
+vi.mock(import('@tck-training/excel-parser'), async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual,
@@ -11,21 +12,21 @@ vi.mock(import("@tck-training/excel-parser"), async (importOriginal) => {
   };
 });
 
-describe("CLI Actions", () => {
-  describe("print action", () => {
+describe('CLI Actions', () => {
+  describe('print action', () => {
     beforeEach(() => {
       vi.clearAllMocks();
       (parseExcelFile as any).mockResolvedValue(trainingCalendarMock);
     });
 
-    it("should print all training calendar data if no player is provided", async () => {
-      await print("test.xlsx", { config: "H50" });
+    it('should print all training calendar data if no player is provided', async () => {
+      await print('test.xlsx', { config: 'H50' });
 
       // TODO: add assertions
     });
 
-    it("should print training calendar data for a specific player if provided", async () => {
-      await print("test.xlsx", { config: "H50", player: "Player 1" });
+    it('should print training calendar data for a specific player if provided', async () => {
+      await print('test.xlsx', { config: 'H50', player: 'Player 1' });
 
       // TODO: add assertions
     });

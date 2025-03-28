@@ -5,15 +5,18 @@
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
-    "clean": "node scripts/clean.js"
+    "clean": "node scripts/clean.js",
+    "format": "npx prettier --write \"**/*.{ts,js,json,md}\"",
+    "format:check": "npx prettier --check \"**/*.{ts,js,json,md}\""
   },
   "devDependencies": {
     "@nx/angular": "^20.6.4",
     "@nx/js": "^20.6.4",
     "@nx/workspace": "^20.6.4",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.11.18",
+    "@types/node": "^22.13.14",
     "nx": "^20.6.4",
+    "prettier": "^3.5.3",
     "rimraf": "^6.0.1"
   },
   "engines": {

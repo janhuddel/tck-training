@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,13 +11,7 @@ import { AppStateService } from '../../../services/app-state.service';
 @Component({
   selector: 'app-select-player',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    FormsModule,
-    SortPipe,
-  ],
+  imports: [CommonModule, MatSelectModule, MatFormFieldModule, FormsModule, SortPipe],
   templateUrl: './select-player.component.html',
   styleUrls: ['./select-player.component.scss'],
 })
@@ -39,9 +27,7 @@ export class SelectPlayerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.appState.trainingCalendar$
       .pipe(filter((e) => e !== null))
-      .subscribe(
-        (calendar) => (this.players = this.getUniquePlayerNames(calendar))
-      );
+      .subscribe((calendar) => (this.players = this.getUniquePlayerNames(calendar)));
   }
 
   ngOnDestroy() {

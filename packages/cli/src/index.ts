@@ -1,37 +1,41 @@
 #!/usr/bin/env node
 
-import { DEFAULT_CONFIGS } from "@tck-training/excel-parser";
-import { Command, Option } from "commander";
-import { ics } from "./actions/ics.js";
-import { print } from "./actions/print.js";
+import { DEFAULT_CONFIGS } from '@tck-training/excel-parser';
+import { Command, Option } from 'commander';
 
-const pkg = await import("../package.json", {
-  assert: { type: "json" },
-});
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { ics } from './actions/ics.js';
+import { print } from './actions/print.js';
 
 const program = new Command();
 
-program.name("tck").description("TCK Training CLI tool").version(pkg.version);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf8'));
+
+program.name('tck').description('TCK Training CLI tool').version(packageJson.version);
 
 // Helper function to add common options to commands
 const addCommonOptions = (command: Command): Command => {
   return command
-    .argument("<file>", "Excel file to parse")
+    .argument('<file>', 'Excel file to parse')
     .addOption(
-      new Option("-c, --config <name>", "Name of the config to use")
+      new Option('-c, --config <name>', 'Name of the config to use')
         .choices(Object.keys(DEFAULT_CONFIGS))
         .makeOptionMandatory()
     )
-    .option("-p, --player <name>", "Player name");
+    .option('-p, --player <name>', 'Player name');
 };
 
 // Create commands with shared options
-addCommonOptions(program.command("print"))
-  .description("print the training calendar on the console")
+addCommonOptions(program.command('print'))
+  .description('print the training calendar on the console')
   .action(print);
 
-addCommonOptions(program.command("ics"))
-  .description("create an ics file from the training calendar")
+addCommonOptions(program.command('ics'))
+  .description('create an ics file from the training calendar')
   .action(ics);
 
 program.parse();

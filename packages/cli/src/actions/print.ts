@@ -3,9 +3,9 @@ import {
   DEFAULT_CONFIGS,
   parseExcelFile,
   TrainingEvent,
-} from "@tck-training/excel-parser";
-import { Table } from "console-table-printer";
-import { format } from "date-fns";
+} from '@tck-training/excel-parser';
+import { Table } from 'console-table-printer';
+import { format } from 'date-fns';
 
 export const print = async (
   file: string,
@@ -15,16 +15,14 @@ export const print = async (
   const calendar = await parseExcelFile(file, DEFAULT_CONFIGS[configName]);
 
   const playerName = options.player;
-  const calendarToDisplay = playerName
-    ? createCalenderForPlayer(calendar, playerName)
-    : calendar;
+  const calendarToDisplay = playerName ? createCalenderForPlayer(calendar, playerName) : calendar;
 
   // Create and configure the table
   const table = new Table({
     columns: [
-      { name: "Date", alignment: "left" },
-      { name: "Time", alignment: "left" },
-      { name: "Players", alignment: "left" },
+      { name: 'Date', alignment: 'left' },
+      { name: 'Time', alignment: 'left' },
+      { name: 'Players', alignment: 'left' },
     ],
   });
 
@@ -36,12 +34,12 @@ export const print = async (
   calendarToDisplay.events.forEach((event: TrainingEvent) => {
     table.addRow(
       {
-        Date: format(event.date, "MMM dd, yyyy"),
-        Time: format(event.date, "HH:mm"),
-        Players: event.players.join(", "),
+        Date: format(event.date, 'MMM dd, yyyy'),
+        Time: format(event.date, 'HH:mm'),
+        Players: event.players.join(', '),
       },
       // Add color to the next upcoming event
-      event === nextEvent ? { color: "green" } : undefined
+      event === nextEvent ? { color: 'green' } : undefined
     );
   });
 

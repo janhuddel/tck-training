@@ -4,9 +4,7 @@ import tseslintParser from "@typescript-eslint/parser";
 
 export default [
   // see: https://github.com/eslint/eslint/discussions/18304
-  {
-    ignores: ["**/dist/*", "tsconfig.json"],
-  },
+  { ignores: ["**/dist/*"] },
   eslint.configs.recommended,
   {
     files: ["**/*.ts"],

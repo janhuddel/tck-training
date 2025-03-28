@@ -51,9 +51,7 @@ export class UploadExcelComponent {
   }
 
   private isExcelFile(file: File): boolean {
-    return ['.xlsx', '.xls'].some((ext) =>
-      file.name.toLowerCase().endsWith(ext)
-    );
+    return ['.xlsx', '.xls'].some((ext) => file.name.toLowerCase().endsWith(ext));
   }
 
   private showError(message: string): void {

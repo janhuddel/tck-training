@@ -6,10 +6,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import {
-  createCalenderForPlayer,
-  TrainingCalendar,
-} from '@tck-training/excel-parser';
+import { createCalenderForPlayer, TrainingCalendar } from '@tck-training/excel-parser';
 import { Subscription } from 'rxjs';
 import { SortPipe } from '../../../pipes/sort.pipe';
 import { AppStateService } from '../../../services/app-state.service';
@@ -41,28 +38,22 @@ export class TrainingCalendarComponent implements OnInit, OnDestroy {
   constructor(private appState: AppStateService) {}
 
   ngOnInit(): void {
-    this.playerNameSubscription = this.appState.selectedPlayer$.subscribe(
-      (player) => {
-        this.player = player;
-        if (this.trainingCalendar != null && this.player != null) {
-          const calenderForPlayer = createCalenderForPlayer(
-            this.trainingCalendar,
-            this.player
-          );
-          console.log(this.player, calenderForPlayer);
+    this.playerNameSubscription = this.appState.selectedPlayer$.subscribe((player) => {
+      this.player = player;
+      if (this.trainingCalendar != null && this.player != null) {
+        const calenderForPlayer = createCalenderForPlayer(this.trainingCalendar, this.player);
+        console.log(this.player, calenderForPlayer);
 
-          this.tableData = calenderForPlayer.events.map((event) => ({
-            date: event.date,
-            otherPlayers: event.players.filter((p) => p !== this.player),
-          }));
-        }
+        this.tableData = calenderForPlayer.events.map((event) => ({
+          date: event.date,
+          otherPlayers: event.players.filter((p) => p !== this.player),
+        }));
       }
-    );
+    });
 
-    this.trainingCalendarSubscription =
-      this.appState.trainingCalendar$.subscribe((calendar) => {
-        this.trainingCalendar = calendar;
-      });
+    this.trainingCalendarSubscription = this.appState.trainingCalendar$.subscribe((calendar) => {
+      this.trainingCalendar = calendar;
+    });
   }
 
   ngOnDestroy(): void {

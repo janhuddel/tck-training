@@ -1,4 +1,4 @@
-import * as XLSX from "xlsx";
+import * as XLSX from 'xlsx';
 
 /**
  * Represents a cell in an Excel worksheet
@@ -12,7 +12,7 @@ export interface ExcelCell {
  * Checks if the code is running in a browser environment
  */
 export function isBrowser(): boolean {
-  return typeof window !== "undefined";
+  return typeof window !== 'undefined';
 }
 
 /**
@@ -20,9 +20,7 @@ export function isBrowser(): boolean {
  */
 export function isNode(): boolean {
   return (
-    typeof process !== "undefined" &&
-    process.versions != null &&
-    process.versions.node != null
+    typeof process !== 'undefined' && process.versions != null && process.versions.node != null
   );
 }
 
@@ -40,45 +38,41 @@ export async function openWorksheet(
   try {
     let workbook: XLSX.WorkBook;
 
-    if (typeof fileInput === "string") {
+    if (typeof fileInput === 'string') {
       if (isBrowser()) {
         throw new Error(
-          "String file paths are not supported in browser environment. Please use File object instead."
+          'String file paths are not supported in browser environment. Please use File object instead.'
         );
       }
 
       if (!isNode()) {
-        throw new Error(
-          "Unsupported environment. Expected Node.js or browser environment."
-        );
+        throw new Error('Unsupported environment. Expected Node.js or browser environment.');
       }
 
       // Node.js environment
-      const fs = await import("fs");
-      const path = await import("path");
+      const fs = await import('fs');
+      const path = await import('path');
 
       // Check if file exists and has correct extension
       if (!fs.existsSync(fileInput)) {
         throw new Error(`File not found: ${fileInput}`);
       }
       const fileExt = path.extname(fileInput).toLowerCase();
-      if (fileExt !== ".xlsx") {
-        throw new Error(
-          `Invalid file format. Expected .xlsx file but got ${fileExt}`
-        );
+      if (fileExt !== '.xlsx') {
+        throw new Error(`Invalid file format. Expected .xlsx file but got ${fileExt}`);
       }
 
       workbook = XLSX.readFile(fileInput);
     } else {
       if (!isBrowser()) {
         throw new Error(
-          "File objects are only supported in browser environment. Please use file path string in Node.js."
+          'File objects are only supported in browser environment. Please use file path string in Node.js.'
         );
       }
 
       // Browser environment
       const data = await readFileAsArrayBuffer(fileInput);
-      workbook = XLSX.read(new Uint8Array(data), { type: "array" });
+      workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
     }
 
     return findWorksheet(workbook, sheetName);
@@ -94,10 +88,7 @@ export async function openWorksheet(
  * @returns The found worksheet
  * @throws Error if no matching worksheet is found
  */
-export function findWorksheet(
-  workbook: XLSX.WorkBook,
-  sheetName: string
-): XLSX.WorkSheet {
+export function findWorksheet(workbook: XLSX.WorkBook, sheetName: string): XLSX.WorkSheet {
   const sheetNames = Object.keys(workbook.Sheets);
   const matchingSheet = sheetNames.find((name) =>
     name.toLowerCase().includes(sheetName.toLowerCase())
@@ -118,15 +109,14 @@ export function findWorksheet(
  */
 export function readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
   if (!isBrowser()) {
-    throw new Error("FileReader is only available in browser environment");
+    throw new Error('FileReader is only available in browser environment');
   }
 
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
-    reader.onload = (event): void =>
-      resolve(event.target?.result as ArrayBuffer);
-    reader.onerror = (): void => reject(new Error("Failed to read file"));
+    reader.onload = (event): void => resolve(event.target?.result as ArrayBuffer);
+    reader.onerror = (): void => reject(new Error('Failed to read file'));
 
     reader.readAsArrayBuffer(file);
   });
@@ -138,10 +128,7 @@ export function readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
  * @param row - The row number to read
  * @returns The player name or null if not found
  */
-export function getPlayerName(
-  worksheet: XLSX.WorkSheet,
-  row: number
-): string | null {
+export function getPlayerName(worksheet: XLSX.WorkSheet, row: number): string | null {
   const cellAddress = XLSX.utils.encode_cell({ r: row, c: 0 });
   const cell = worksheet[cellAddress];
   return cell?.v?.toString() || null;
@@ -153,7 +140,7 @@ export function getPlayerName(
  * @returns True if the cell contains a valid date string
  */
 export function isValidDateCell(cell: ExcelCell): boolean {
-  return cell && typeof cell.w === "string";
+  return cell && typeof cell.w === 'string';
 }
 
 /**
@@ -162,7 +149,7 @@ export function isValidDateCell(cell: ExcelCell): boolean {
  * @returns The extracted date or null if the cell does not contain a valid date
  */
 export function extractDateFromCell(cell: XLSX.CellObject): Date | null {
-  if (!cell || cell.t !== "n") {
+  if (!cell || cell.t !== 'n') {
     return null;
   }
 

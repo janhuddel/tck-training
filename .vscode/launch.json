@@ -16,13 +16,7 @@
       "name": "Debug Current Test File",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "test",
-        "--",
-        "${fileBasename}",
-        "--runInBand",
-        "--watchAll=false"
-      ],
+      "runtimeArgs": ["test", "--", "${fileBasename}", "--runInBand", "--watchAll=false"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true

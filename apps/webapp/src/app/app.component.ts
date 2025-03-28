@@ -7,12 +7,7 @@ import { TrainingStepperComponent } from './training-stepper/training-stepper.co
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    TrainingStepperComponent,
-  ],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, TrainingStepperComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

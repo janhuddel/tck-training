@@ -1,13 +1,14 @@
 import eslint from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tseslintParser from "@typescript-eslint/parser";
+import prettierPlugin from "eslint-plugin-prettier";
+import prettierConfig from "eslint-config-prettier";
 
 export default [
   // see: https://github.com/eslint/eslint/discussions/18304
-  {
-    ignores: ["**/dist/*", "tsconfig.json"],
-  },
+  { ignores: ["**/dist/*"] },
   eslint.configs.recommended,
+  prettierConfig,
   {
     files: ["**/*.ts"],
     languageOptions: {
@@ -23,12 +24,14 @@ export default [
 
     plugins: {
       "@typescript-eslint": tseslint,
+      prettier: prettierPlugin,
     },
     rules: {
       ...tseslint.configs.recommended.rules,
       "@typescript-eslint/explicit-function-return-type": "warn",
       "@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/no-explicit-any": "error",
+      "prettier/prettier": "error",
     },
   },
 ];
