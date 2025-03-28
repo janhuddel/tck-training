@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "deploy": "ng deploy"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +20,8 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@tck-training/excel-parser": "^1.0.0-alpha.1",
+    "@tck-training/excel-parser": "1.0.0-alpha.17",
+    "date-fns": "^4.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

@@ -3,8 +3,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { DEFAULT_CONFIGS, parseExcelFile } from '@tck-training/excel-parser';
-import { AppStateService } from '../../../services/app-state.service';
 
 @Component({
   selector: 'app-upload-excel',
@@ -14,13 +12,10 @@ import { AppStateService } from '../../../services/app-state.service';
   styleUrls: ['./upload-excel.component.scss'],
 })
 export class UploadExcelComponent {
-  @Output() uploadComplete = new EventEmitter<void>();
+  @Output() uploadComplete = new EventEmitter<File>();
   isUploading = false;
 
-  constructor(
-    private snackBar: MatSnackBar,
-    private appState: AppStateService
-  ) {}
+  constructor(private snackBar: MatSnackBar) {}
 
   async onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -36,10 +31,7 @@ export class UploadExcelComponent {
 
     this.isUploading = true;
     try {
-      const calendar = await parseExcelFile(file, DEFAULT_CONFIGS['H50']);
-      this.appState.setTrainingCalendar(calendar);
-
-      this.uploadComplete.emit();
+      this.uploadComplete.emit(file);
       this.showSuccess('File uploaded successfully');
     } catch (error) {
       this.showError('An unexpected error occurred while processing the file');

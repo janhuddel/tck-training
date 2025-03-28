@@ -1,5 +1,7 @@
 import { Config, H50, PROVI } from './parser/config.js';
 
+export { createICS } from './utils/ics.js';
+
 export {
   createCalenderForPlayer,
   getTrainingPartnerStats,

@@ -1,4 +1,5 @@
 export interface Config {
+  friendlyName: string;
   sheetName: string;
   dateRowIndex: number;
   firstDateColumnIndex: number;
@@ -8,6 +9,7 @@ export interface Config {
 }
 
 export const H50: Config = {
+  friendlyName: 'H50',
   sheetName: 'H50',
   dateRowIndex: 1,
   firstDateColumnIndex: 2,
@@ -20,6 +22,7 @@ export const H50: Config = {
 };
 
 export const PROVI: Config = {
+  friendlyName: 'PROVI',
   sheetName: 'Spielplan',
   dateRowIndex: 4,
   firstDateColumnIndex: 2,

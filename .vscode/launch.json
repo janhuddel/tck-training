@@ -3,20 +3,11 @@
   "configurations": [
     {
       "type": "node",
-      "name": "Debug Jest Tests",
+      "name": "debug tests of excel-parser",
       "request": "launch",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["test", "--", "--runInBand", "--watchAll=false"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true
-    },
-    {
-      "type": "node",
-      "name": "Debug Current Test File",
-      "request": "launch",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["test", "--", "${fileBasename}", "--runInBand", "--watchAll=false"],
+      "cwd": "${workspaceFolder}/packages/excel-parser",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["test", "--run"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true

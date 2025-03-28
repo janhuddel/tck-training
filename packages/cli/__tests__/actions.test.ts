@@ -1,11 +1,13 @@
-import { parseExcelFile } from '@tck-training/excel-parser';
 import { beforeEach, describe, it, vi } from 'vitest';
 import { print } from '../src/actions/print';
 import { trainingCalendarMock } from './__fixtures__/training-calendar';
 
-// only mock the parseExcelFile function
-vi.mock(import('@tck-training/excel-parser'), async (importOriginal) => {
-  const actual = await importOriginal();
+// Import the real module first
+import * as excelParser from '@tck-training/excel-parser';
+
+// Mock only the parseExcelFile function
+vi.mock('@tck-training/excel-parser', async () => {
+  const actual = await vi.importActual('@tck-training/excel-parser');
   return {
     ...actual,
     parseExcelFile: vi.fn(),
@@ -16,7 +18,7 @@ describe('CLI Actions', () => {
   describe('print action', () => {
     beforeEach(() => {
       vi.clearAllMocks();
-      (parseExcelFile as any).mockResolvedValue(trainingCalendarMock);
+      (excelParser.parseExcelFile as any).mockResolvedValue(trainingCalendarMock);
     });
 
     it('should print all training calendar data if no player is provided', async () => {

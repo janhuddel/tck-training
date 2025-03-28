@@ -2,9 +2,11 @@
     padding: 1rem;
     color: white;
     
-    h2 {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 1rem;
-      text-align: center;
     }
   
     table {

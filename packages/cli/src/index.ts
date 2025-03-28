@@ -2,20 +2,16 @@
 
 import { DEFAULT_CONFIGS } from '@tck-training/excel-parser';
 import { Command, Option } from 'commander';
-
 import { readFileSync } from 'fs';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import { ics } from './actions/ics.js';
-import { print } from './actions/print.js';
+import { join } from 'path';
+import { ics } from './actions/ics';
+import { print } from './actions/print';
 
 const program = new Command();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// Read version from package.json
 const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf8'));
-
-program.name('tck').description('TCK Training CLI tool').version(packageJson.version);
+program.name('tck-training').description('TCK Training CLI tool').version(packageJson.version);
 
 // Helper function to add common options to commands
 const addCommonOptions = (command: Command): Command => {

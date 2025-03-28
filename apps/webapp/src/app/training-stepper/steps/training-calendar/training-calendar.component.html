@@ -1,11 +1,17 @@
 <div *ngIf="player" class="training-dates-container">
-  <p>Trainingskalender für {{ player }}</p>
+  <div class="header">
+    <p>Trainingskalender für {{ player }}</p>
+    <button mat-raised-button color="primary" (click)="generateICSFile()">
+      <mat-icon>calendar_today</mat-icon>
+      ICS Datei herunterladen
+    </button>
+  </div>
 
   <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Datum</th>
       <td mat-cell *matCellDef="let training">
-        {{ training.date | date : "mediumDate" }}
+        {{ training.date | date: 'mediumDate' }}
       </td>
     </ng-container>
 
@@ -13,9 +19,7 @@
       <th mat-header-cell *matHeaderCellDef>Mitspieler</th>
       <td mat-cell *matCellDef="let training">
         <mat-chip-set>
-          <mat-chip *ngFor="let player of training.otherPlayers | sort">{{
-            player
-          }}</mat-chip>
+          <mat-chip *ngFor="let player of training.otherPlayers | sort">{{ player }}</mat-chip>
         </mat-chip-set>
       </td>
     </ng-container>

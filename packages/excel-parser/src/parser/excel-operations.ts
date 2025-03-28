@@ -49,9 +49,11 @@ export async function openWorksheet(
         throw new Error('Unsupported environment. Expected Node.js or browser environment.');
       }
 
-      // Node.js environment
-      const fs = await import('fs');
-      const path = await import('path');
+      // Node.js environment - only import when needed
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
+      const fs = require('fs');
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
+      const path = require('path');
 
       // Check if file exists and has correct extension
       if (!fs.existsSync(fileInput)) {
@@ -154,7 +156,7 @@ export function extractDateFromCell(cell: XLSX.CellObject): Date | null {
   }
 
   // Use XLSX's built-in date converter
-  const date = XLSX.SSF.parse_date_code(cell.v);
+  const date = XLSX.SSF.parse_date_code(cell.v as number);
   if (!date) {
     return null;
   }

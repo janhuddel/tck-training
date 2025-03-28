@@ -1,14 +1,16 @@
 {
   "name": "@tck-training/cli",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.15",
   "description": "Tool (CLI), um Trainingstermine aus einer Excel-Datei zu lesen und in verschiedenen Formaten auszugeben.",
-  "type": "module",
+  "type": "commonjs",
   "main": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
+  "types": "dist/index.d.ts",
   "bin": {
     "tck-training": "dist/index.js"
   },
@@ -32,7 +34,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tck-training/tck-training.git",
-    "directory": "packages/excel-parser"
+    "directory": "packages/cli"
   },
   "scripts": {
     "build": "tsc",
@@ -46,13 +48,14 @@
     "format:check": "npx prettier --check \"**/*.{ts,js,json,md}\""
   },
   "dependencies": {
-    "@tck-training/excel-parser": "1.0.0-alpha.7",
+    "@tck-training/excel-parser": "1.0.0-alpha.17",
     "commander": "^12.0.0",
     "console-table-printer": "^2.12.1",
     "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
+    "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "eslint": "^9.23.0",
